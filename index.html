@@ -1,0 +1,200 @@
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2025 by pHXXX (http://jsbin.com/sevabar/20/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IMS</title>
+</head>
+<body>
+  
+</body>
+</html>
+<meta name="robots" content="noindex">
+<head>
+<meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+<style id="jsbin-css">
+/* ===================================
+    Google font
+====================================== */
+
+/* @import url('https://fonts.googleapis.com/css?family=Roboto:300,300i,500&display=swap'); */
+@import url('https://fonts.googleapis.com/css?family=Oswald:200,300,400,500,700&display=swap');
+
+body {
+  margin: 0;
+  overflow: hidden; /* Запобігаємо прокрутці */
+  font-family: Oswald, sans-serif;
+  font-weight: 300;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.header-container {
+  display: block;
+  height: 10vh;
+
+}
+
+.footer-container {
+  display: block;
+  height: 3vh;
+}
+
+.logo {
+  height: 70%;
+  margin: 10px 20px 20px 20px;
+}
+
+.menu-container {
+  display: flex;
+  flex-direction: column; /* Змінюємо напрямок на колонки (вертикально) */
+  width: 100%;
+}
+
+.menu-block {
+  height: 30vh; /* Приблизно 33vh для початкової висоти */
+  width: 100%;
+  transition: height 0.5s ease-in-out; /* Плавний перехід при зміні висоти */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Вирівнюємо контент на початок (верх) */
+  align-items: center; /* Центруємо по горизонталі */
+  padding-top: 10px; /* Додаємо невеликий відступ зверху для h2 */
+  box-sizing: border-box; /* Враховуємо padding у загальних розмірах */
+  text-align: center;
+  color: white; /* Колір тексту */
+  cursor: pointer; /* Змінюємо курсор на вказівник */
+}
+
+
+#block1 { background-color: #ffcc11; }
+#block2 { background-color: #4a4a4a; }
+#block3 { background-color: #ffcc11; }
+
+
+#block1 {
+  background-image: url('./images/img-1.png'); /* шлях до вашого зображення */
+  background-repeat: no-repeat; /* Не повторювати зображення */
+  background-position: right bottom; /* Розмістити в правому нижньому куті */
+  background-size: contain; /* Зображення вміщається повністю, зберігаючи пропорції */
+}
+
+#block2 {
+  background-image: url('./images/img-2.png');   
+  background-repeat: no-repeat; /* Не повторювати зображення */
+  background-position: left bottom; /* Розмістити в правому нижньому куті */
+  background-size: contain; /* Зображення вміщається повністю, зберігаючи пропорції */
+}
+
+
+#block3 {
+  background-image: url('./images/img-3.png'); /* URL зображення */
+  background-repeat: no-repeat; /* Не повторювати зображення */
+  background-position: right bottom; /* Розмістити в правому нижньому куті */
+  background-size: contain; /* Зображення вміщається повністю, зберігаючи пропорції */
+}
+
+
+
+/* Вирівнювання для блоків */
+#block1, #block3 {
+  align-items: flex-start; /* Вирівнюємо контент до лівого краю */
+  text-align: left; /* Вирівнюємо текст по лівому краю */
+  padding-left: 20px; /* Додаємо відступ зліва */
+  padding-right: 20px; /* Додаємо відступ справа для симетрії */
+  color: #000;
+}
+
+#block2 {
+  align-items: flex-end; /* Вирівнюємо контент до правого краю */
+  text-align: right; /* Вирівнюємо текст по правому краю */
+  padding-right: 20px; /* Додаємо відступ справа */
+  padding-left: 20px; /* Додаємо відступ зліва для симетрії */
+}
+
+.menu-block h2 {
+  margin-top: 0; /* Прибираємо стандартний відступ зверху для h2 */
+  margin-bottom: 10px; /* Додаємо невеликий відступ знизу */
+  font-size: 2em;
+  font-weight: 300;
+}
+
+
+
+p {
+  font-size: 1.4em;
+  font-weight: 200;
+}
+
+
+.menu-block .hidden-on-default {
+  opacity: 0; /* Робимо параграф невидимим за замовчуванням */
+  max-height: 0; /* Приховуємо, щоб не займав місце */
+  overflow: hidden; /* Обрізаємо контент, якщо він виходить за межі */
+  transition: opacity 0.3s ease-in-out, max-height 0.3s ease-in-out; /* Плавний перехід */
+  font-size: 2em;
+  font-weight: 400;
+}
+
+.menu-block:hover {
+  height: 70vh; /* Розширюємо блок при наведенні */
+}
+
+.menu-block:hover .hidden-on-default {
+  opacity: 1; /* Робимо параграф видимим при наведенні */
+  max-height: 200px; /* Даємо йому достатньо висоти, щоб з'явитися */
+  /* Можете налаштувати max-height залежно від очікуваного обсягу тексту */
+}
+
+/* Стилі для інших блоків, коли один розширено */
+.menu-block:hover ~ .menu-block,
+.menu-container:hover .menu-block:not(:hover) {
+  height: 10vh; /* Зменшуємо інші блоки */
+}
+
+/* Приховуємо параграфи в стиснутих блоках, якщо вони з'явилися */
+.menu-block:hover ~ .menu-block .hidden-on-default,
+.menu-container:hover .menu-block:not(:hover) .hidden-on-default {
+  opacity: 0;
+  max-height: 0;
+}
+/* Tablet */
+@media screen and (min-width: 768px) {
+  .menu-block .hidden-on-default {
+  font-size: 4em;
+  font-weight: 400;
+}
+}
+</style>
+</head>
+<body>
+<div class="header-container">
+<img src="https://ims.kyiv.ua/src/img/logo.svg" class="logo" alt="logo">
+</div>
+<div class="menu-container">
+  <div class="menu-block" id="block1">
+    <h2>Послуги</h2>
+    <p>від 299 грн</p>
+    <p class="hidden-on-default">Підключення, монтаж, сервіс, ремонт</p>
+  </div>
+  <div class="menu-block" id="block2">
+    <h2>Сервісний контракт</h2>
+    <p>від 99 грн/міс</p>
+    <p class="hidden-on-default">Гарантійний сервіс за підпискою</p>
+  </div>
+  <div class="menu-block" id="block3">
+    <h2>Технічна підтримка</h2>
+    <p>від 99 грн/міс</p>
+    <p class="hidden-on-default">Онлайн та голосова технічна підтримка / консультація</p>
+
+  </div>
+</div>
+</body>
